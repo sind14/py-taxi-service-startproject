@@ -22,8 +22,8 @@ class Driver(AbstractUser):
 
 class Car(models.Model):
     model = models.CharField(max_length=100)
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
-    drivers = models.ManyToManyField(Driver)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, related_name="cars")
+    drivers = models.ManyToManyField(Driver, related_name="cars")
 
     class Meta:
         ordering = ("model",)
